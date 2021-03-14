@@ -1,6 +1,6 @@
 <template>
   <Navigation />
-  <router-view />
+  <router-view id="content" />
 </template>
 
 <script lang="ts">
@@ -14,11 +14,21 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+}
+
+#content {
   text-align: center;
-  color: #2c3e50;
 }
 </style>
