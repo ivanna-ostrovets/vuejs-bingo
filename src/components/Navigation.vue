@@ -7,8 +7,11 @@
 
 <style>
 #nav {
-  padding: 30px;
-  text-align: right;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 30px;
 }
 
 #nav a {

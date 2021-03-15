@@ -1,6 +1,6 @@
 <template>
   <Navigation />
-  <router-view id="content" />
+  <div id="content"><router-view /></div>
 </template>
 
 <script lang="ts">
@@ -25,10 +25,14 @@ body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--text-color);
+  color: var(--primary);
+  height: 100%;
 }
 
 #content {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - var(--nav-height));
 }
 </style>
