@@ -18,6 +18,5 @@ export default defineComponent({
 .tile {
   border-radius: 4px;
   background-color: white;
-  margin: 2px;
 }
 </style>
