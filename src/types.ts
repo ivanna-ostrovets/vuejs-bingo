@@ -9,10 +9,4 @@ export interface BoardColumn {
   };
 }
 
-export type Board = [
-  BoardColumn,
-  BoardColumn,
-  BoardColumn,
-  BoardColumn,
-  BoardColumn,
-];
+export type Board = BoardColumn[];

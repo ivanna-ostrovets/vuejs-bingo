@@ -4,13 +4,14 @@
 
 <script lang="ts">
 import { Tile } from '@/./types';
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
   components: {},
   props: {
-    tile: Tile,
+    tile: Object as PropType<Tile>,
   },
-};
+});
 </script>
 
 <style scoped>

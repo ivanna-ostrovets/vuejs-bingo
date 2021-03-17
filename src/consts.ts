@@ -4,6 +4,6 @@ export const columns = [
   { name: 'N', color: 'green', from: 31, to: 45 },
   { name: 'G', color: 'blue', from: 46, to: 60 },
   { name: 'O', color: 'purple', from: 61, to: 75 },
-];
+] as const;
 
 export const rowsCount = 5;

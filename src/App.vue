@@ -5,12 +5,13 @@
 
 <script lang="ts">
 import Navigation from '@/components/Navigation.vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   components: {
     Navigation,
   },
-};
+});
 </script>
 
 <style>

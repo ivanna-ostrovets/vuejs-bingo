@@ -18,26 +18,27 @@
 </template>
 
 <script lang="ts">
-import GameTile from '@/components/GameTile.vue';
 import ColumnHeader from '@/components/ColumnHeader.vue';
-import { Board } from '@/types';
+import GameTile from '@/components/GameTile.vue';
 import { columns } from '@/consts';
+import { Board } from '@/types';
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
   components: {
     GameTile,
     ColumnHeader,
   },
   props: {
-    id: String,
-    board: Board,
+    id: { type: String },
+    board: { type: Object as PropType<Board>, required: true },
   },
   data() {
     return {
       columnNames: columns,
     };
   },
-};
+});
 </script>
 
 <style scoped>
