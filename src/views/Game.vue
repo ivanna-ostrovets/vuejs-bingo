@@ -7,42 +7,39 @@
 </template>
 
 <script lang="ts">
-import { columns, rowsCount } from '@/./consts';
+import { columnsConfig, rowsCount } from '@/./consts';
 import { Board, BoardColumn } from '@/./types';
 import GameBoard from '@/components/GameBoard.vue';
 import { generateTileValue } from '@/utils';
+import shortid from 'shortid';
 import { defineComponent } from 'vue';
 
-function generateBoard(boardIndex: number) {
-  let boardId = String(boardIndex);
+function generateUniqueValue(min: number, max: number, values: string[]) {
+  let value: number;
 
-  function generateColumn(
-    { from, to }: { from: number; to: number },
-    columnIndex: number,
-  ) {
-    return [...Array(rowsCount)].reduce((rows: BoardColumn, row, rowIndex) => {
-      let value;
-      const values = Object.keys(rows);
+  do {
+    value = generateTileValue(min, max);
+  } while (values.includes(String(value)));
 
-      do {
-        value = generateTileValue(from, to);
-      } while (values.includes(String(value)));
+  return value;
+}
 
-      boardId += value;
+function generateColumn(min: number, max: number): BoardColumn {
+  return [...Array(rowsCount)].reduce((column: BoardColumn) => {
+    const value = generateUniqueValue(min, max, Object.keys(column));
 
-      return {
-        ...rows,
-        [value]: {
-          value,
-          id: [boardIndex, columnIndex, rowIndex, value].join(''),
-        },
-      };
-    }, {});
-  }
+    return {
+      ...column,
+      [value]: { value, id: shortid.generate() },
+    };
+  }, {});
+}
 
-  const board: Board = columns.map(generateColumn);
-
-  return { board, id: boardId };
+function generateBoard(): { id: string; board: Board } {
+  return {
+    id: shortid.generate(),
+    board: columnsConfig.map(({ min, max }) => generateColumn(min, max)),
+  };
 }
 
 export default defineComponent({
@@ -51,7 +48,7 @@ export default defineComponent({
   },
   data() {
     return {
-      boards: [generateBoard(0)],
+      boards: [generateBoard()],
     };
   },
 });

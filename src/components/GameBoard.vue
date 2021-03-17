@@ -20,7 +20,7 @@
 <script lang="ts">
 import ColumnHeader from '@/components/ColumnHeader.vue';
 import GameTile from '@/components/GameTile.vue';
-import { columns } from '@/consts';
+import { columnsConfig } from '@/consts';
 import { Board } from '@/types';
 import { defineComponent, PropType } from 'vue';
 
@@ -35,7 +35,7 @@ export default defineComponent({
   },
   data() {
     return {
-      columnNames: columns,
+      columnNames: columnsConfig,
     };
   },
 });

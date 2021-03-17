@@ -4,9 +4,7 @@ export interface Tile {
 }
 
 export interface BoardColumn {
-  [key: number]: {
-    value: number;
-  };
+  [key: number]: Tile;
 }
 
 export type Board = BoardColumn[];
